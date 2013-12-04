@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "PNColor.h"
-
+#import "UICountingLabel.h"
 
 #define DEGREES_TO_RADIANS(angle) ((angle) / 180.0 * M_PI)
 
@@ -24,5 +24,6 @@
 
 @property(nonatomic,strong) CAShapeLayer * circle;
 @property(nonatomic,strong) CAShapeLayer * circleBG;
+@property (nonatomic, strong) UICountingLabel *gradeLabel;
 
 @end

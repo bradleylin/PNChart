@@ -50,17 +50,16 @@
 -(void)strokeChart
 {
     //Add count label
-    
-    UICountingLabel* gradeLabel = [[UICountingLabel alloc] initWithFrame:CGRectMake(0, 0, 50.0, 50.0)];
-    [gradeLabel setTextAlignment:NSTextAlignmentCenter];
-    [gradeLabel setFont:[UIFont boldSystemFontOfSize:13.0f]];
-    [gradeLabel setTextColor: PNDeepGrey];
-    [gradeLabel setCenter:CGPointMake(self.center.x,self.center.y)];
-    gradeLabel.method = UILabelCountingMethodEaseInOut;
-    gradeLabel.format = @"%d%%";
-   
-    
-    [self addSubview:gradeLabel];
+    if (!_gradeLabel) {
+        _gradeLabel = [[UICountingLabel alloc] initWithFrame:CGRectMake(0, 0, 50.0, 50.0)];
+        [_gradeLabel setTextAlignment:NSTextAlignmentCenter];
+        [_gradeLabel setFont:[UIFont boldSystemFontOfSize:13.0f]];
+        [_gradeLabel setTextColor: PNDeepGrey];
+        [_gradeLabel setCenter:CGPointMake(self.center.x,self.center.y)];
+        _gradeLabel.method = UILabelCountingMethodEaseInOut;
+        _gradeLabel.format = @"%d%%";
+        [self addSubview:_gradeLabel];
+    }
     
     //Add circle params
     
@@ -79,7 +78,7 @@
     [_circle addAnimation:pathAnimation forKey:@"strokeEndAnimation"];
     _circle.strokeEnd   = [_current floatValue]/[_total floatValue];
     
-    [gradeLabel countFrom:0 to:[_current floatValue]/[_total floatValue]*100 withDuration:1.0];
+    [_gradeLabel countFrom:0 to:[_current floatValue]/[_total floatValue]*100 withDuration:1.0];
    
 }
 
